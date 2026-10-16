@@ -37,6 +37,8 @@ CPU-Scheduling-Simulator/
 ├── style.css
 ├── script.js
 ├── README.md
+├── verify.js            # Optional automated correctness checks
+├── package.json         # Node.js module configuration
 └── algorithms/
     ├── fcfs.js
     ├── sjf.js
@@ -108,11 +110,21 @@ The simulator was checked against hand-calculated schedules and metrics for:
 - **Simultaneous arrivals and tie test:** P1 (0, 4), P2 (0, 2), P3 (0, 2), P4 (1, 1), using SJF.
 - **SRTF preemption test:** P1 (0, 10), P2 (2, 3), P3 (4, 1).
 - **Round Robin quantum comparison:** Workload A with quantum values 1, 2, and 4.
+- **Round Robin counterexample:** P1 (0, 4), P2 (0, 4), with quantum values 1 and 4.
+- **Additional SJF tie-breaking test:** P1 (3, 2), P2 (2, 2), P3 (0, 5), using SJF.
 - **Round Robin queue-boundary test:** P1 (0, 4), P2 (2, 1), quantum 2; expected execution: P1 (0–2), P2 (2–3), P1 (3–5).
-- **Round Robin counterexample:** P1 (0, 4), P2 (0, 4), tested with quantum values 1 and 4.
-- **Additional SJF tie-breaking test:** P1 (3, 2), P2 (2, 2), P3 (0, 5), testing arrival-time priority over input order.
 
 Each pair above is written as `(arrival time, CPU burst)`.
+
+## Automated verification (optional)
+
+If Node.js is installed, run the five scheduling-property checks from the project folder:
+
+```bash
+node verify.js
+```
+
+This checks exact CPU burst execution, arrival-time constraints, single-CPU execution, nonnegative waiting/response times, and absence of idle time while a process is ready. The script also checks SJF arrival-time tie-breaking and the Round Robin quantum-boundary order. It runs 34 algorithm/workload combinations (170 property checks).
 
 ## Limitations
 

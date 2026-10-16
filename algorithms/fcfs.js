@@ -1,13 +1,11 @@
 export function fcfs(processes) {
-    //map javascriptte bir dizinin her elemanı üzerinde işlem yapmaka ve yeni bir
-    //dizi oluşturmak için kullanılır
     const sorted = processes
         .map((p, index) => ({...p, index }))
         .sort((a, b) => a.arrival - b.arrival || a.index - b.index);
 
-    let currentTime = 0; //cpu nun bulunduğu zamanı tutar
+    let currentTime = 0; 
     //{ id: "P1", start: 0, end: 8 },
-    const gantt = []; // hangi processin hangi zamanlarda çalıştığını saklayan dizi
+    const gantt = []; 
     const results = [];
 
     for (const p of sorted)
