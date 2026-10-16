@@ -125,6 +125,3 @@ This is an educational single-CPU simulator, not a real operating-system schedul
 
 No external JavaScript framework or database is required.
 
-## AI assistance
-
-ChatGPT was used for implementation guidance, explanations, debugging experiments, interface improvements, and report drafting. Scheduling results were compared against manual calculations and test cases, as described in the assignment report.
